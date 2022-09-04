@@ -1,0 +1,284 @@
+/* Basic styles */
+html { /* 1rem = 10 px */
+  font-size: 62.5%;
+  font-family: "Roboto Mono", monospace;
+}
+
+body {
+  width: 100%;
+  height: 100%;
+  overflow-x: hidden;
+}
+
+*, *::after, *::before {
+  box-sizing: border-box;
+}
+
+*:focus:not(:focus-visible) {
+  outline: none;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+/* Info modal */
+.infoBackground {
+  background-color: rgba(4, 10, 15, 0.9);
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 100;
+  display: none;
+}
+.infoBackground .infoContainer {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 600px;
+  max-width: 90%;
+  background-color: #F1F1F1;
+  border-radius: 1rem;
+  padding: 2rem;
+}
+.infoBackground .infoContainer #infoClose {
+  height: 50px;
+  width: 50px;
+  position: absolute;
+  right: 20px;
+  top: 20px;
+  fill: #161f27;
+  cursor: pointer;
+  border-radius: 10px;
+  padding: 10px;
+  transition: 0.2s;
+}
+@media screen and (max-width: 900px) {
+  .infoBackground .infoContainer #infoClose {
+    right: 10px;
+    top: 10px;
+  }
+}
+.infoBackground .infoContainer #infoClose:hover {
+  background-color: #161f27;
+  fill: #F1F1F1;
+}
+.infoBackground .infoContainer h6 {
+  color: #040a0f;
+  font-size: 2.4rem;
+}
+.infoBackground .infoContainer h6:nth-child(2) {
+  text-align: center;
+  border-bottom: #161f27 solid 1px;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  padding: 10px;
+  margin: auto;
+}
+.infoBackground .infoContainer p {
+  color: #161f27;
+  font-size: 1.6rem;
+  margin: 1.5rem auto;
+  color: #111;
+}
+.infoBackground .infoContainer p strong {
+  color: black;
+  font-weight: bolder;
+}
+.infoBackground .infoContainer p:last-child {
+  margin-top: 50px;
+  text-align: center;
+}
+
+/* Home */
+.container {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-flow: column;
+}
+.container h1 {
+  border-bottom: solid #f1f1f1 3px;
+  color: #F1F1F1;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  padding: 0 10px;
+  text-align: center;
+  font-size: 3rem;
+  margin: 50px auto;
+}
+.container .containerSection .pomodoroContainer {
+  background-color: #F1F1F1;
+  padding: 50px;
+  margin: auto;
+  text-align: center;
+  border-radius: 1rem;
+  position: relative;
+}
+@media screen and (max-width: 900px) {
+  .container .containerSection .pomodoroContainer {
+    width: 90%;
+  }
+}
+.container .containerSection .pomodoroContainer .sound {
+  height: 50px;
+  width: 50px;
+  position: absolute;
+  left: 20px;
+  top: 20px;
+  fill: #161f27;
+  cursor: pointer;
+  border-radius: 10px;
+  padding: 10px;
+  transition: 0.2s;
+}
+@media screen and (max-width: 900px) {
+  .container .containerSection .pomodoroContainer .sound {
+    left: 10px;
+    top: 10px;
+  }
+}
+.container .containerSection .pomodoroContainer .sound:hover {
+  background-color: #161f27;
+  fill: #F1F1F1;
+}
+.container .containerSection .pomodoroContainer #mute {
+  fill: red;
+}
+.container .containerSection .pomodoroContainer #info {
+  height: 50px;
+  width: 50px;
+  position: absolute;
+  right: 20px;
+  top: 20px;
+  fill: #161f27;
+  cursor: pointer;
+  border-radius: 10px;
+  padding: 10px;
+  transition: 0.2s;
+}
+@media screen and (max-width: 900px) {
+  .container .containerSection .pomodoroContainer #info {
+    right: 10px;
+    top: 10px;
+  }
+}
+.container .containerSection .pomodoroContainer #info:hover {
+  background-color: #161f27;
+  fill: #F1F1F1;
+}
+.container .containerSection .pomodoroContainer p {
+  font-size: 2.2rem;
+  color: #040a0f;
+}
+.container .containerSection .pomodoroContainer #timer {
+  margin: 50px auto;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  max-width: 90%;
+  border-radius: 1rem;
+  padding: 10px 100px;
+  font-size: 3rem;
+  color: #F1F1F1;
+  background-color: #040a0f;
+}
+@media screen and (max-width: 900px) {
+  .container .containerSection .pomodoroContainer #timer {
+    padding: 10px 25px;
+  }
+}
+.container .containerSection .pomodoroContainer input {
+  margin: auto;
+  font-size: 3rem;
+  text-align: center;
+}
+@media screen and (max-width: 900px) {
+  .container .containerSection .pomodoroContainer input {
+    max-width: 90%;
+    font-size: 2rem;
+  }
+}
+.container .containerSection .pomodoroContainer #time {
+  margin: 50px auto;
+  max-width: 90%;
+}
+.container .containerSection .listContainer {
+  margin-top: 10rem;
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  max-width: 100%;
+  min-height: 100px;
+  flex-flow: row wrap;
+}
+@media screen and (max-width: 900px) {
+  .container .containerSection .listContainer {
+    flex-flow: column;
+  }
+}
+.container .containerSection .listContainer .list {
+  background-color: #F1F1F1;
+  width: 30%;
+  min-width: 200px;
+  border-radius: 1rem;
+}
+@media screen and (max-width: 900px) {
+  .container .containerSection .listContainer .list {
+    margin: 2rem auto;
+    width: 90%;
+  }
+}
+.container .containerSection .listContainer .list .listItems {
+  min-height: 100px;
+  min-width: 100%;
+}
+.container .containerSection .listContainer .list .mid, .container .containerSection .listContainer .list .right {
+  height: 200%;
+  max-height: 80%;
+}
+.container .containerSection .listContainer .list .listText {
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  padding: 5px;
+  color: #161f27;
+  font-size: 2.2rem;
+  margin: 1rem auto;
+  font-size: bold;
+  border-bottom: #161f27 solid 1px;
+}
+.container .containerSection .listContainer .list .listInput {
+  width: 100%;
+  text-align: center;
+}
+.container .containerSection .listContainer .list .listInput input {
+  margin: 15px auto;
+  font-size: 1.4rem;
+  min-width: 80%;
+}
+.container .containerSection .listContainer .list .itemContainer {
+  margin: 2rem auto;
+  max-width: 80%;
+}
+.container .containerSection .listContainer .list .itemContainer .item {
+  color: #161f27;
+  font-size: 1.8rem;
+  margin: auto;
+  color: #333;
+  transition: 0.2s;
+  display: inline;
+  cursor: all-scroll;
+}
+.container .containerSection .listContainer .list .itemContainer .closeTask {
+  cursor: pointer;
+  display: inline;
+  padding: 1rem;
+  font-size: 1.8rem;
+}/*# sourceMappingURL=style.css.map */

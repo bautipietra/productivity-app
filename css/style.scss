@@ -1,0 +1,274 @@
+/* Basic styles */
+
+$colores: (
+    --bg-primary: #040a0f,
+    --bg-secondary: #F1F1F1,
+    --light: #161f27,
+);
+
+html { /* 1rem = 10 px */
+    font-size: 62.5%;
+    font-family: 'Roboto Mono', monospace;
+}
+// #183c5b #a0d2eb
+body {
+    width: 100%;
+    height: 100%;
+    overflow-x: hidden;
+}
+
+*, *::after, *::before  {
+    box-sizing: border-box;
+}
+
+*:focus:not(:focus-visible) {
+    outline: none;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+// responsive
+
+@mixin mq ($res : 900px) {
+    @media screen and (max-width: $res) {
+        @content
+    }
+}
+
+/* Info modal */
+
+.infoBackground {
+    background-color: rgba($color:  #040a0f, $alpha: .9);
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 100;
+    display: none;
+    .infoContainer {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 600px;
+        max-width: 90%;
+        background-color: map-get($map: $colores, $key: --bg-secondary);
+        border-radius: 1rem;
+        padding: 2rem;
+        #infoClose {
+            height: 50px;
+            width: 50px;
+            position: absolute;
+            right: 20px;
+            top: 20px;
+            fill: map-get($map: $colores, $key: --light);
+            cursor: pointer;
+            border-radius: 10px;
+            padding: 10px;
+            transition: 0.2s;
+            @include mq () {
+                right: 10px;
+                top: 10px;
+            }
+            &:hover {
+                background-color: map-get($map: $colores, $key: --light);
+                fill: map-get($map: $colores, $key: --bg-secondary);
+            }
+        }
+        h6 {
+            color: map-get($map: $colores, $key: --bg-primary);
+            font-size: 2.4rem;
+            &:nth-child(2) {
+                text-align: center;
+                border-bottom: map-get($map: $colores, $key: --light) solid 1px;
+                width: fit-content;
+                padding: 10px;
+                margin: auto;
+            }
+        }
+        p {
+            color: map-get($map: $colores, $key: --light);
+            font-size: 1.6rem;
+            margin: 1.5rem auto;
+            color: #111;
+            strong {
+                color: black;
+                font-weight: bolder;
+            }
+            &:last-child {
+                margin-top: 50px;
+                text-align: center;
+            }
+        }
+    }
+}
+
+/* Home */
+
+.container {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-flow: column;
+    h1 {
+        border-bottom: solid rgba($color: map-get($map: $colores, $key: --bg-secondary), $alpha: 1) 3px;
+        color: map-get($map: $colores, $key: --bg-secondary);
+        width: fit-content;
+        padding: 0 10px;
+        text-align: center;
+        font-size: 3rem;
+        margin: 50px auto;
+    }
+    .containerSection {
+        .pomodoroContainer {
+            background-color: map-get($map: $colores, $key: --bg-secondary);
+            padding: 50px;
+            margin: auto;
+            text-align: center;
+            border-radius: 1rem;
+            position: relative;
+            @include mq () {width: 90%;}
+            .sound {
+                height: 50px;
+                width: 50px;
+                position: absolute;
+                left: 20px;
+                top: 20px;
+                fill: map-get($map: $colores, $key: --light);
+                cursor: pointer;
+                border-radius: 10px;
+                padding: 10px;
+                transition: 0.2s;
+                @include mq () {
+                    left: 10px;
+                    top: 10px;
+                }
+                &:hover {
+                    background-color: map-get($map: $colores, $key: --light);
+                    fill: map-get($map: $colores, $key: --bg-secondary);
+                }
+            }
+            #mute {
+                fill: red;
+            }
+            #info {
+                height: 50px;
+                width: 50px;
+                position: absolute;
+                right: 20px;
+                top: 20px;
+                fill: map-get($map: $colores, $key: --light);
+                cursor: pointer;
+                border-radius: 10px;
+                padding: 10px;
+                transition: 0.2s;
+                @include mq () {
+                    right: 10px;
+                    top: 10px;
+                }
+                &:hover {
+                    background-color: map-get($map: $colores, $key: --light);
+                    fill: map-get($map: $colores, $key: --bg-secondary);
+                }
+            }
+            p {
+                font-size: 2.2rem;
+                color: map-get($map: $colores, $key: --bg-primary);
+            }
+            #timer {
+                margin: 50px auto;
+                width: fit-content;
+                max-width: 90%;
+                border-radius: 1rem;
+                padding: 10px 100px;
+                font-size: 3rem;
+                color: map-get($map: $colores, $key: --bg-secondary);
+                background-color: map-get($map: $colores, $key: --bg-primary);
+                @include mq () {padding: 10px 25px;}
+            }
+            input {
+                margin: auto;
+                font-size: 3rem;
+                text-align: center;
+                @include mq () {
+                    max-width: 90%;
+                    font-size: 2rem;
+                }
+            }
+            #time {
+                margin: 50px auto;
+                max-width: 90%;
+            }
+        }
+        .listContainer {
+            margin-top: 10rem;
+            display: flex;
+            width: 100%;
+            justify-content: space-between;
+            max-width: 100%;
+            min-height: 100px;
+            flex-flow: row wrap;
+            @include mq () {flex-flow: column;}
+            .list {
+                background-color: map-get($map: $colores, $key: --bg-secondary);
+                width: 30%;
+                min-width: 200px;
+                border-radius: 1rem;
+                @include mq () {
+                    margin: 2rem auto;
+                    width: 90%;
+                }
+                .listItems {
+                    min-height: 100px;
+                    min-width: 100%;
+                }
+                .mid,.right {
+                    height: calc(100% * 2);
+                    max-height: 80%;
+                }
+                .listText {
+                    width: fit-content;
+                    padding: 5px;
+                    color: map-get($map: $colores, $key: --light);
+                    font-size: 2.2rem;
+                    margin: 1rem auto;
+                    font-size: bold;
+                    border-bottom: map-get($map: $colores, $key: --light) solid 1px;
+                }
+                .listInput {
+                    width: 100%;
+                    text-align: center;
+                    input {
+                        margin: 15px auto;
+                        font-size: 1.4rem;
+                        min-width: 80%;
+                    }
+                }
+                .itemContainer {
+                    margin: 2rem auto;
+                    max-width: 80%;
+                    .item {
+                        color: map-get($map: $colores, $key: --light);
+                        font-size: 1.8rem;
+                        margin: auto;
+                        color: #333;
+                        transition: 0.2s;
+                        display: inline;
+                        cursor: all-scroll;
+                    }
+                    .closeTask {
+                        cursor: pointer;
+                        display: inline;
+                        padding: 1rem;
+                        font-size: 1.8rem;
+                    }
+                }
+            }
+        }
+    }
+}
+
